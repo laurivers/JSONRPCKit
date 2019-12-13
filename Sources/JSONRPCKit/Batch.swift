@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import Result
 
 public protocol Batch {
     associatedtype Responses
@@ -40,11 +39,11 @@ public struct Batch1<Request: JSONRPCKit.Request>: Batch {
     }
 
     public static func responses(from results: Results) throws -> Responses {
-        return try results.dematerialize()
+        return try results.get()
     }
 }
 
-public struct Batch2<Request1: Request, Request2: Request>: Batch {
+public struct Batch2<Request1: JSONRPCKit.Request, Request2: JSONRPCKit.Request>: Batch {
     public typealias Responses = (Request1.Response, Request2.Response)
     public typealias Results = (Result<Request1.Response, JSONRPCError>, Result<Request2.Response, JSONRPCError>)
 
@@ -85,13 +84,13 @@ public struct Batch2<Request1: Request, Request2: Request>: Batch {
 
     public static func responses(from results: Results) throws -> Responses {
         return (
-            try results.0.dematerialize(),
-            try results.1.dematerialize()
+            try results.0.get(),
+            try results.1.get()
         )
     }
 }
 
-public struct Batch3<Request1: Request, Request2: Request, Request3: Request>: Batch {
+public struct Batch3<Request1: JSONRPCKit.Request, Request2: JSONRPCKit.Request, Request3: JSONRPCKit.Request>: Batch {
     public typealias Responses = (Request1.Response, Request2.Response, Request3.Response)
     public typealias Results = (Result<Request1.Response, JSONRPCError>, Result<Request2.Response, JSONRPCError>, Result<Request3.Response, JSONRPCError>)
 
@@ -137,14 +136,14 @@ public struct Batch3<Request1: Request, Request2: Request, Request3: Request>: B
 
     public static func responses(from results: Results) throws -> Responses {
         return (
-            try results.0.dematerialize(),
-            try results.1.dematerialize(),
-            try results.2.dematerialize()
+            try results.0.get(),
+            try results.1.get(),
+            try results.2.get()
         )
     }
 }
 
-public struct Batch4<Request1: Request, Request2: Request, Request3: Request, Request4: Request>: Batch {
+public struct Batch4<Request1: JSONRPCKit.Request, Request2: JSONRPCKit.Request, Request3: JSONRPCKit.Request, Request4: JSONRPCKit.Request>: Batch {
     public typealias Responses = (Request1.Response, Request2.Response, Request3.Response, Request4.Response)
     public typealias Results = (Result<Request1.Response, JSONRPCError>, Result<Request2.Response, JSONRPCError>, Result<Request3.Response, JSONRPCError>, Result<Request4.Response, JSONRPCError>)
 
@@ -195,15 +194,15 @@ public struct Batch4<Request1: Request, Request2: Request, Request3: Request, Re
 
     public static func responses(from results: Results) throws -> Responses {
         return (
-            try results.0.dematerialize(),
-            try results.1.dematerialize(),
-            try results.2.dematerialize(),
-            try results.3.dematerialize()
+            try results.0.get(),
+            try results.1.get(),
+            try results.2.get(),
+            try results.3.get()
         )
     }
 }
 
-public struct Batch5<Request1: Request, Request2: Request, Request3: Request, Request4: Request, Request5: Request>: Batch {
+public struct Batch5<Request1: JSONRPCKit.Request, Request2: JSONRPCKit.Request, Request3: JSONRPCKit.Request, Request4: JSONRPCKit.Request, Request5: JSONRPCKit.Request>: Batch {
     public typealias Responses = (Request1.Response, Request2.Response, Request3.Response, Request4.Response, Request5.Response)
     public typealias Results = (Result<Request1.Response, JSONRPCError>, Result<Request2.Response, JSONRPCError>, Result<Request3.Response, JSONRPCError>, Result<Request4.Response, JSONRPCError>, Result<Request5.Response, JSONRPCError>)
 
@@ -259,16 +258,16 @@ public struct Batch5<Request1: Request, Request2: Request, Request3: Request, Re
 
     public static func responses(from results: Results) throws -> Responses {
         return (
-            try results.0.dematerialize(),
-            try results.1.dematerialize(),
-            try results.2.dematerialize(),
-            try results.3.dematerialize(),
-            try results.4.dematerialize()
+            try results.0.get(),
+            try results.1.get(),
+            try results.2.get(),
+            try results.3.get(),
+            try results.4.get()
         )
     }
 }
 
-public struct Batch6<Request1: Request, Request2: Request, Request3: Request, Request4: Request, Request5: Request, Request6: Request>: Batch {
+public struct Batch6<Request1: JSONRPCKit.Request, Request2: JSONRPCKit.Request, Request3: JSONRPCKit.Request, Request4: JSONRPCKit.Request, Request5: JSONRPCKit.Request, Request6: JSONRPCKit.Request>: Batch {
     public typealias Responses = (Request1.Response, Request2.Response, Request3.Response, Request4.Response, Request5.Response, Request6.Response)
     public typealias Results = (Result<Request1.Response, JSONRPCError>, Result<Request2.Response, JSONRPCError>, Result<Request3.Response, JSONRPCError>, Result<Request4.Response, JSONRPCError>, Result<Request5.Response, JSONRPCError>, Result<Request6.Response, JSONRPCError>)
 
@@ -329,12 +328,12 @@ public struct Batch6<Request1: Request, Request2: Request, Request3: Request, Re
 
     public static func responses(from results: Results) throws -> Responses {
         return (
-            try results.0.dematerialize(),
-            try results.1.dematerialize(),
-            try results.2.dematerialize(),
-            try results.3.dematerialize(),
-            try results.4.dematerialize(),
-            try results.5.dematerialize()
+            try results.0.get(),
+            try results.1.get(),
+            try results.2.get(),
+            try results.3.get(),
+            try results.4.get(),
+            try results.5.get()
         )
     }
 }

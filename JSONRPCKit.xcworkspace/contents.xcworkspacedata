@@ -19,8 +19,5 @@
       <FileRef
          location = "group:Carthage/Checkouts/APIKit/APIKit.xcodeproj">
       </FileRef>
-      <FileRef
-         location = "group:Carthage/Checkouts/Result/Result.xcodeproj">
-      </FileRef>
    </Group>
 </Workspace>
